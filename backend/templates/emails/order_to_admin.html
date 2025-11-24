@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Накладная для исполнения заказа</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -30px -30px 30px -30px;
+            text-align: center;
+        }
+        .order-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .products-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .products-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .products-table tr:hover {
+            background: #f8f9fa;
+        }
+        .total-amount {
+            color: #e74c3c;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .urgent-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📦 Накладная для исполнения заказа #{{ order.id }}</h1>
+            <p>Дата заказа: {{ order.dt|date:"d.m.Y H:i" }}</p>
+        </div>
+
+        <div class="order-info">
+            <h2 style="margin-top: 0; color: #667eea;">Детали заказа</h2>
+            <div class="info-grid">
+                <div>
+                    <strong>Номер заказа:</strong> #{{ order.id }}<br>
+                    <strong>Дата создания:</strong> {{ order.dt|date:"d.m.Y H:i" }}<br>
+                    <strong>Статус:</strong> {{ order.get_status_display }}<br>
+                </div>
+                <div>
+                    <strong>Клиент:</strong> {{ order.user.first_name }} {{ order.user.last_name }}<br>
+                    <strong>Email:</strong> {{ order.user.email }}<br>
+                    <strong>Телефон:</strong> {{ order.get_contact_phone }}<br>
+                </div>
+            </div>
+            <div style="margin-top: 15px;">
+                <strong>Адрес доставки:</strong> {{ order.get_contact_address }}
+            </div>
+        </div>
+
+        <h2 style="color: #667eea;">🛒 Состав заказа</h2>
+        <table class="products-table">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th width="100">Кол-во</th>
+                    <th width="120">Цена за ед.</th>
+                    <th width="120">Стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>
+                        <strong>{{ item.product_name }}</strong>
+                        {% if item.category_name %}
+                        <br><small style="color: #666;">Категория: {{ item.category_name }}</small>
+                        {% endif %}
+                    </td>
+                    <td>{{ item.quantity }} шт.</td>
+                    <td>{{ item.product_info.price }} ₽</td>
+                    <td>{{ item.total_price }} ₽</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr style="background: #f8f9fa; font-weight: bold;">
+                    <td colspan="3" style="text-align: right; padding-right: 20px;">
+                        Общая сумма заказа:
+                    </td>
+                    <td class="total-amount">
+                        {{ total_price }} ₽
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="urgent-notice">
+            <h3 style="margin: 0; color: #e67e22;">⚠️ Требуется срочная обработка</h3>
+            <p style="margin: 10px 0 0 0;">
+                Пожалуйста, выполните сборку и отгрузку заказа в кратчайшие сроки.
+                После выполнения уведомите клиента о готовности заказа.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
