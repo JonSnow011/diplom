@@ -1,0 +1,15 @@
+INFO 2025-11-28 17:46:43,483 email_service Накладная отправлена администратору для заказа #2
+INFO 2025-11-28 17:46:43,489 email_service Подтверждение заказа отправлено клиенту для заказа #2
+INFO 2025-11-28 17:46:43,489 email_service Оба письма успешно отправлены для заказа #2
+INFO 2025-11-28 18:08:45,344 email_service Накладная отправлена администратору для заказа #2
+INFO 2025-11-28 18:08:45,350 email_service Подтверждение заказа отправлено клиенту для заказа #2
+INFO 2025-11-28 18:08:45,350 email_service Оба письма успешно отправлены для заказа #2
+INFO 2025-11-28 18:31:02,020 email_service Накладная отправлена администратору для заказа #2
+ERROR 2025-11-28 18:31:04,462 email_service Ошибка отправки email подтверждения клиенту для заказа #2: (550, b'spam message rejected. Please visit https://help.mail.ru/notspam-support/id?c=PqE1xON_GkhSCYrHb-DpjqIyjvBAQMYPiR95LC26CkAFAAAAf-0BALwH_g0~ or  report details to abuse@corp.mail.ru. Error code: C435A13E481A7FE3C78A09528EE9E06FF08E32A20FC640402C791F89400ABA2D. ID: 000000050001ED7F0DFE07BC.')
+WARNING 2025-11-28 18:31:04,463 email_service Не все письма отправлены для заказа #2. Администратор: True, Клиент: False
+INFO 2025-11-28 18:45:08,080 email_service Накладная отправлена администратору для заказа #2
+ERROR 2025-11-28 18:45:09,882 email_service Ошибка отправки email подтверждения клиенту для заказа #2: (550, b'spam message rejected. Please visit https://help.mail.ru/notspam-support/id?c=7y4ytdHbuOFt9C945JBcNaIyjvBAQMYPdlJDoUyqfYIjAAAAGYEBAHBiqCM~ or  report details to abuse@corp.mail.ru. Error code: B5322EEFE1B8DBD1782FF46D355C90E4F08E32A20FC64040A1435276827DAA4C. ID: 000000230001811923A86270.')
+WARNING 2025-11-28 18:45:09,882 email_service Не все письма отправлены для заказа #2. Администратор: True, Клиент: False
+INFO 2025-11-28 18:46:24,561 email_service Накладная отправлена администратору для заказа #3
+INFO 2025-11-28 18:46:25,789 email_service Подтверждение заказа отправлено клиенту для заказа #3
+INFO 2025-11-28 18:46:25,790 email_service Оба письма успешно отправлены для заказа #3

@@ -42,13 +42,13 @@ class EmailService:
             email.send()
 
             logger.info(
-                f"✅ Накладная отправлена администратору для заказа #{order.id}"
+                f"Накладная отправлена администратору для заказа #{order.id}"
             )
             return True
 
         except Exception as e:
             logger.error(
-                f"❌ Ошибка отправки email администратору для заказа #{order.id}: {e}"
+                f"Ошибка отправки email администратору для заказа #{order.id}: {e}"
             )
             return False
 
@@ -81,13 +81,13 @@ class EmailService:
             email.send()
 
             logger.info(
-                f"✅ Подтверждение заказа отправлено клиенту для заказа #{order.id}"
+                f"Подтверждение заказа отправлено клиенту для заказа #{order.id}"
             )
             return True
 
         except Exception as e:
             logger.error(
-                f"❌ Ошибка отправки email подтверждения клиенту для заказа #{order.id}: {e}"
+                f"Ошибка отправки email подтверждения клиенту для заказа #{order.id}: {e}"
             )
             return False
 
@@ -113,10 +113,10 @@ class EmailService:
 
             # Логируем общий результат
             if results["admin_email_sent"] and results["customer_email_sent"]:
-                logger.info(f"✅ Оба письма успешно отправлены для заказа #{order.id}")
+                logger.info(f"Оба письма успешно отправлены для заказа #{order.id}")
             else:
                 logger.warning(
-                    f"⚠️ Не все письма отправлены для заказа #{order.id}. "
+                    f"Не все письма отправлены для заказа #{order.id}. "
                     f'Администратор: {results["admin_email_sent"]}, '
                     f'Клиент: {results["customer_email_sent"]}'
                 )
@@ -124,5 +124,5 @@ class EmailService:
             return results
 
         except Exception as e:
-            logger.error(f"❌ Ошибка при отправке email для заказа #{order.id}: {e}")
+            logger.error(f"Ошибка при отправке email для заказа #{order.id}: {e}")
             return {"admin_email_sent": False, "customer_email_sent": False}

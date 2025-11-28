@@ -117,15 +117,15 @@ AUTH_USER_MODEL = "backend.User"
 # Email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.mail.ru"
-EMAIL_HOST_USER = "netology.diplom@mail.ru"
-EMAIL_HOST_PASSWORD = "CLdm7yW4U9nivz9mbexu"
+EMAIL_HOST_USER = "alanshagirov@bk.ru"
+EMAIL_HOST_PASSWORD = "T83DNeWW8gqeDLDgx840"
 EMAIL_PORT = "465"
 EMAIL_USE_SSL = True
 SERVER_EMAIL = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = "netology.diplom@mail.ru"
+DEFAULT_FROM_EMAIL = "alanshagirov@bk.ru"
 
 # Email администратора для уведомлений о заказах
-ADMIN_EMAIL = "netology.diplom@mail.ru"
+ADMIN_EMAIL = "alanshagirov@bk.ru"
 
 # REST Framework settings
 REST_FRAMEWORK = {
